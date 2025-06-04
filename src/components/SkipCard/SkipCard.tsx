@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Skip } from '../../types';
 
 interface SkipCardProps {
@@ -10,14 +10,46 @@ interface SkipCardProps {
 const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
   const [imageError, setImageError] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
+  const [currentImageUrl, setCurrentImageUrl] = useState(skip.image);
+  const [currentUrlIndex, setCurrentUrlIndex] = useState(0);
+
+  // Reset image state when skip changes
+  useEffect(() => {
+    setImageError(false);
+    setImageLoading(true);
+    setCurrentImageUrl(skip.image);
+    setCurrentUrlIndex(0);
+  }, [skip.image]);
+
+  const fallbackUrls = [
+    skip.image, // Original URL
+    `${skip.image}.jpg`, // Try with .jpg extension
+    `${skip.image}.png`, // Try with .png extension
+    `${skip.image}.webp`, // Try with .webp extension
+  ];
 
   const handleImageError = () => {
-    setImageError(true);
-    setImageLoading(false);
+    console.log(`Image failed to load for skip ${skip.size}:`, currentImageUrl);
+    
+    // Try next fallback URL
+    const nextIndex = currentUrlIndex + 1;
+    if (nextIndex < fallbackUrls.length) {
+      console.log(`Trying fallback URL ${nextIndex} for skip ${skip.size}:`, fallbackUrls[nextIndex]);
+      setCurrentUrlIndex(nextIndex);
+      setCurrentImageUrl(fallbackUrls[nextIndex]);
+      setImageLoading(true); // Reset loading state for new URL
+    } else {
+      // All fallbacks failed
+      console.log(`All image URLs failed for skip ${skip.size}`);
+      setImageError(true);
+      setImageLoading(false);
+    }
   };
 
   const handleImageLoad = () => {
+    console.log(`Image loaded successfully for skip ${skip.size}:`, currentImageUrl);
     setImageLoading(false);
+    setImageError(false);
   };
   return (
     <div 
@@ -54,7 +86,7 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
           </div>
         ) : (
           <img 
-            src={skip.image} 
+            src={currentImageUrl} 
             alt={`${skip.size} skip`} 
             className={`w-full h-full object-cover transition-opacity duration-300 ${
               imageLoading ? 'opacity-0' : 'opacity-100'

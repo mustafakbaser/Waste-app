@@ -5,8 +5,22 @@ const SUPABASE_STORAGE_URL = 'https://yozbrydxdlcxghkphhtq.supabase.co/storage/v
 
 // Function to generate image URL based on skip size
 const generateImageUrl = (size: number): string => {
-  const imageFileName = `${size}-yarder-skip`;
-  return `${SUPABASE_STORAGE_URL}/${imageFileName}`;
+  // Common skip sizes that might have images
+  const commonSizes = [4, 6, 8, 10, 12, 14, 16, 20, 40];
+  
+  // If it's not a common size, try to find the closest one
+  let actualSize = size;
+  if (!commonSizes.includes(size)) {
+    actualSize = commonSizes.reduce((prev, curr) => 
+      Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev
+    );
+    console.log(`Size ${size} not common, using ${actualSize} instead`);
+  }
+  
+  const imageFileName = `${actualSize}-yarder-skip`;
+  const fullUrl = `${SUPABASE_STORAGE_URL}/${imageFileName}`;
+  console.log(`Generated image URL for size ${size}:`, fullUrl);
+  return fullUrl;
 };
 
 // Function to format price with VAT included
