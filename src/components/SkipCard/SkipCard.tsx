@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Skip } from '../../types';
 
 interface SkipCardProps {
@@ -8,6 +8,17 @@ interface SkipCardProps {
 }
 
 const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
+
+  const handleImageError = () => {
+    setImageError(true);
+    setImageLoading(false);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoading(false);
+  };
   return (
     <div 
       className={`
@@ -29,11 +40,29 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
       }}
     >
       <div className="relative aspect-[5/3] overflow-hidden">
-        <img 
-          src={skip.image} 
-          alt={`${skip.size} skip`} 
-          className="w-full h-full object-cover"
-        />
+        {imageLoading && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+            <div className="text-gray-400 text-sm">Loading...</div>
+          </div>
+        )}
+        {imageError ? (
+          <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+            <div className="text-center text-gray-500">
+              <div className="text-2xl mb-2">📦</div>
+              <div className="text-sm">Skip Image</div>
+            </div>
+          </div>
+        ) : (
+          <img 
+            src={skip.image} 
+            alt={`${skip.size} skip`} 
+            className={`w-full h-full object-cover transition-opacity duration-300 ${
+              imageLoading ? 'opacity-0' : 'opacity-100'
+            }`}
+            onError={handleImageError}
+            onLoad={handleImageLoad}
+          />
+        )}
         <div className="absolute top-2 right-2">
           <span className="bg-blue-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
             {skip.size}
@@ -48,6 +77,26 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
         <p className="text-gray-600 text-sm mb-3">
           {skip.hirePeriod} hire period
         </p>
+        
+        {/* Additional information tags */}
+        <div className="flex flex-wrap gap-1 mb-3">
+          {skip.allowedOnRoad && (
+            <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+              Road Legal
+            </span>
+          )}
+          {skip.allowsHeavyWaste && (
+            <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+              Heavy Waste OK
+            </span>
+          )}
+          {skip.transportCost && (
+            <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
+              Transport: £{skip.transportCost}
+            </span>
+          )}
+        </div>
+        
         <p className="text-blue-700 text-xl font-bold mb-4">
           {skip.price}
         </p>
