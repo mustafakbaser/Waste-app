@@ -4,7 +4,9 @@ import SkipGrid from '../../components/SkipGrid/SkipGrid';
 import Footer from '../../components/Footer/Footer';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import FilterBar from '../../components/FilterBar';
 import useSkips from '../../hooks/useSkips';
+import useSkipFilters from '../../hooks/useSkipFilters';
 import type { Skip } from '../../types';
 
 // These would normally come from app state or URL params
@@ -14,6 +16,13 @@ const AREA = 'Leicestershire';
 const SelectSkipPage: React.FC = () => {
   const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
   const { skips, loading, error, retry } = useSkips(POSTCODE, AREA);
+  const { 
+    filters, 
+    setFilters, 
+    filteredSkips, 
+    totalCount, 
+    filteredCount 
+  } = useSkipFilters(skips);
 
   const handleSelectSkip = (skip: Skip) => {
     setSelectedSkip(skip);
@@ -54,11 +63,19 @@ const SelectSkipPage: React.FC = () => {
         ) : error ? (
           <ErrorMessage message={error} onRetry={retry} />
         ) : (
-          <SkipGrid 
-            skips={skips}
-            selectedSkip={selectedSkip}
-            onSelectSkip={handleSelectSkip}
-          />
+          <>
+            <FilterBar
+              filters={filters}
+              onFiltersChange={setFilters}
+              skipCount={filteredCount}
+              totalCount={totalCount}
+            />
+            <SkipGrid 
+              skips={filteredSkips}
+              selectedSkip={selectedSkip}
+              onSelectSkip={handleSelectSkip}
+            />
+          </>
         )}
       </main>
       
