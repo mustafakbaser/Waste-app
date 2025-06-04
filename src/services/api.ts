@@ -22,8 +22,8 @@ export const fetchSkips = async (postcode: string, area: string): Promise<Skip[]
     
     const data: ApiResponse = await response.json();
     
-    // Transform the API response to our Skip type with added images
-    return data.skips.map((skip) => ({
+    // Transform the API response directly since it's already an array
+    return data.map((skip) => ({
       ...skip,
       id: `${skip.size}-${skip.price}`,
       image: skipImages[skip.size] || skipImages['4 Yard'], // Fallback to default

@@ -23,3 +23,24 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Package
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+# Build output
+coverage
+# Temporary files
+temp
+tmp
+# Miscellaneous
+*.bak
+*.tmp
+# Operating system files
+Thumbs.db
+# IDE specific files
+*.iml
+# Dependency directories
+bower_components
+# Compiled source #
+*.class

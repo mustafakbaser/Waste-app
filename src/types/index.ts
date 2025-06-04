@@ -6,6 +6,5 @@ export interface Skip {
   image: string;
 }
 
-export interface ApiResponse {
-  skips: Skip[];
-}
+// Updated to reflect that the API returns an array directly
+export type ApiResponse = Skip[];
