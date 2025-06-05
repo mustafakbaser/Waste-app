@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import ProgressIndicator from '../../components/ProgressIndicator/ProgressIndicator';
 import SkipGrid from '../../components/SkipGrid/SkipGrid';
-import Footer from '../../components/Footer/Footer';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import FilterBar from '../../components/FilterBar';
 import Pagination from '../../components/Pagination/Pagination';
+import FloatingCart from '../../components/FloatingCart/FloatingCart';
 import useSkips from '../../hooks/useSkips';
 import useSkipFilters from '../../hooks/useSkipFilters';
 import type { Skip } from '../../types';
 
-// These would normally come from app state or URL params
 const POSTCODE = 'LE10 1SH';
 const AREA = 'Leicestershire';
 const ITEMS_PER_PAGE = 6;
@@ -105,7 +104,7 @@ const SelectSkipPage: React.FC = () => {
         )}
       </main>
       
-      <Footer
+      <FloatingCart
         selectedSkip={selectedSkip}
         onBack={handleBack}
         onContinue={handleContinue}
