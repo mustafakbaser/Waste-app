@@ -46,6 +46,7 @@ const SelectSkipPage: React.FC = () => {
   // Calculate pagination
   const totalPages = Math.ceil(filteredSkips.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, filteredSkips.length);
   const paginatedSkips = filteredSkips.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   // Reset to first page when filters change
@@ -89,11 +90,16 @@ const SelectSkipPage: React.FC = () => {
               onSelectSkip={handleSelectSkip}
             />
             {totalPages > 1 && (
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-              />
+              <div className="mt-8 space-y-4">
+                <p className="text-center text-sm text-gray-600">
+                  Showing {startIndex + 1}-{endIndex} of {filteredSkips.length} skips
+                </p>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
+              </div>
             )}
           </>
         )}
