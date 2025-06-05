@@ -169,6 +169,32 @@ Separated filtering logic for maintainability:
 - Debounced search
 - Optimized re-renders
 
+### Error Handling Strategy
+
+Implemented a robust, multi-layered error handling system:
+
+- **Custom Error Types**
+  - Specialized `ApiError` class with status codes and error types
+  - Granular error categorization (network, timeout, validation)
+  - Contextual error messages for better UX
+
+- **Error Recovery**
+  - Automatic retry mechanism for transient failures
+  - Graceful degradation during network issues
+  - Offline state detection and handling
+
+- **User Feedback**
+  - Visual error states with appropriate icons
+  - Clear, user-friendly error messages
+  - Action-oriented recovery options
+  - Localized error messages across all supported languages
+
+- **Error Prevention**
+  - Request timeout handling (10s limit)
+  - Input validation before API calls
+  - Response format validation
+  - Proper error boundary implementation
+
 ## 📱 Responsive Design
 
 The application follows a mobile-first approach with breakpoints:
