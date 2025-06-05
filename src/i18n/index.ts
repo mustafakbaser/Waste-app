@@ -9,13 +9,26 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
+    supportedLngs: ['en', 'fr', 'de', 'es', 'tr'],
+    load: 'languageOnly',
     debug: process.env.NODE_ENV === 'development',
+    
+    // Language detection configuration
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng',
+    },
+
     interpolation: {
       escapeValue: false,
     },
+
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/translation.json',
     },
+
+    lng: 'en',
   });
 
 export default i18n;

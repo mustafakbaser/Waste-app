@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import i18n from '../i18n';
 
 interface SettingsState {
   theme: 'light' | 'dark';
@@ -14,10 +15,17 @@ const useSettingsStore = create<SettingsState>()(
       theme: 'light',
       language: 'en',
       setTheme: (theme) => set({ theme }),
-      setLanguage: (language) => set({ language }),
+      setLanguage: (language) => {
+        i18n.changeLanguage(language);
+        set({ language });
+      },
     }),
     {
       name: 'settings-storage',
+      partialize: (state) => ({
+        theme: state.theme,
+        language: 'en', // Always default to English in storage
+      }),
     }
   )
 );
