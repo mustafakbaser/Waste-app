@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { XIcon, ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import type { Skip } from '../../types';
 
@@ -14,6 +14,13 @@ const FloatingCart: React.FC<FloatingCartProps> = ({
   onContinue,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Auto-expand when a skip is selected
+  useEffect(() => {
+    if (selectedSkip) {
+      setIsExpanded(true);
+    }
+  }, [selectedSkip]);
 
   const toggleExpanded = () => {
     if (selectedSkip) {
