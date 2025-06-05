@@ -50,37 +50,43 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <nav
-      className="flex items-center justify-center space-x-1 mt-8"
+      className="flex items-center justify-center space-x-2 mt-6 mb-8"
       role="navigation"
       aria-label="Pagination Navigation"
     >
+      {/* Previous Button */}
       <button
         onClick={() => handlePageClick(currentPage - 1)}
         disabled={currentPage === 1}
         className={`
           relative inline-flex items-center px-3 py-2 rounded-md text-sm font-medium
+          transition-all duration-300 ease-in-out
+          shadow-sm hover:shadow-md
           ${currentPage === 1
             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'}
+            : 'bg-white text-gray-700 hover:bg-gray-50 hover:text-blue-600 border border-gray-200'}
         `}
         aria-label="Previous page"
       >
         <ChevronLeftIcon className="h-5 w-5" />
       </button>
 
-      <div className="flex items-center space-x-1">
+      {/* Page Numbers */}
+      <div className="flex items-center space-x-2">
         {getPageNumbers().map((page, index) => (
           <React.Fragment key={index}>
             {typeof page === 'string' ? (
-              <span className="px-3 py-2 text-gray-500">...</span>
+              <span className="px-2 py-2 text-gray-500">...</span>
             ) : (
               <button
                 onClick={() => handlePageClick(page)}
                 className={`
                   relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-md
+                  transition-all duration-300 ease-in-out
+                  shadow-sm hover:shadow-md
                   ${currentPage === page
-                    ? 'z-10 bg-blue-700 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'}
+                    ? 'z-10 bg-blue-600 text-white border border-blue-600 shadow-md'
+                    : 'bg-white text-gray-700 hover:bg-gray-50 hover:text-blue-600 border border-gray-200'}
                 `}
                 aria-current={currentPage === page ? 'page' : undefined}
                 aria-label={`Page ${page}`}
@@ -92,14 +98,17 @@ const Pagination: React.FC<PaginationProps> = ({
         ))}
       </div>
 
+      {/* Next Button */}
       <button
         onClick={() => handlePageClick(currentPage + 1)}
         disabled={currentPage === totalPages}
         className={`
           relative inline-flex items-center px-3 py-2 rounded-md text-sm font-medium
+          transition-all duration-300 ease-in-out
+          shadow-sm hover:shadow-md
           ${currentPage === totalPages
             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'}
+            : 'bg-white text-gray-700 hover:bg-gray-50 hover:text-blue-600 border border-gray-200'}
         `}
         aria-label="Next page"
       >

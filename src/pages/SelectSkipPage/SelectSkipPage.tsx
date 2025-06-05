@@ -82,7 +82,7 @@ const SelectSkipPage: React.FC = () => {
   }, [filters]);
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-24">
+    <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm">
         <ProgressIndicator />
       </header>
