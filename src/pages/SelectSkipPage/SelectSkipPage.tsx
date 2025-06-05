@@ -8,10 +8,10 @@ import Pagination from '../../components/Pagination/Pagination';
 import FloatingCart from '../../components/FloatingCart/FloatingCart';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import CompareModal from '../../components/CompareModal/CompareModal';
+import CompareBar from '../../components/CompareBar/CompareBar';
 import SettingsModal from '../../components/SettingsModal/SettingsModal';
 import useSkips from '../../hooks/useSkips';
 import useSkipFilters from '../../hooks/useSkipFilters';
-import { Settings } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { Skip } from '../../types';
 
@@ -24,6 +24,7 @@ const SelectSkipPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [compareSkips, setCompareSkips] = useState<Skip[]>([]);
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+  const [isCompareBarExpanded, setIsCompareBarExpanded] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { t } = useTranslation();
   
@@ -47,10 +48,18 @@ const SelectSkipPage: React.FC = () => {
         return current.filter(s => s.id !== skip.id);
       }
       if (current.length < 3) {
-        return [...current, skip];
+        const newSkips = [...current, skip];
+        if (newSkips.length === 1) {
+          setIsCompareBarExpanded(true);
+        }
+        return newSkips;
       }
       return current;
     });
+  };
+
+  const handleRemoveCompareSkip = (skip: Skip) => {
+    setCompareSkips(current => current.filter(s => s.id !== skip.id));
   };
 
   const handleBack = () => {
@@ -117,18 +126,6 @@ const SelectSkipPage: React.FC = () => {
               totalCount={totalCount}
             />
 
-            {/* Compare Button */}
-            {compareSkips.length > 0 && (
-              <div className="mb-6">
-                <button
-                  onClick={() => setIsCompareModalOpen(true)}
-                  className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  Compare {compareSkips.length} Skip{compareSkips.length > 1 ? 's' : ''}
-                </button>
-              </div>
-            )}
-
             {filteredSkips.length === 0 ? (
               <EmptyState onReset={handleResetFilters} />
             ) : (
@@ -162,6 +159,14 @@ const SelectSkipPage: React.FC = () => {
         selectedSkip={selectedSkip}
         onBack={handleBack}
         onContinue={handleContinue}
+      />
+
+      <CompareBar
+        skips={compareSkips}
+        onRemoveSkip={handleRemoveCompareSkip}
+        onCompare={() => setIsCompareModalOpen(true)}
+        isExpanded={isCompareBarExpanded}
+        onToggleExpand={() => setIsCompareBarExpanded(!isCompareBarExpanded)}
       />
 
       <CompareModal
