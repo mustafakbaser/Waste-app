@@ -7,6 +7,7 @@ import FilterBar from '../../components/FilterBar';
 import Pagination from '../../components/Pagination/Pagination';
 import FloatingCart from '../../components/FloatingCart/FloatingCart';
 import EmptyState from '../../components/EmptyState/EmptyState';
+import CompareModal from '../../components/CompareModal/CompareModal';
 import useSkips from '../../hooks/useSkips';
 import useSkipFilters from '../../hooks/useSkipFilters';
 import type { Skip } from '../../types';
@@ -18,6 +19,9 @@ const ITEMS_PER_PAGE = 6;
 const SelectSkipPage: React.FC = () => {
   const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [compareSkips, setCompareSkips] = useState<Skip[]>([]);
+  const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+  
   const { skips, loading, error, retry } = useSkips(POSTCODE, AREA);
   const { 
     filters, 
@@ -29,6 +33,19 @@ const SelectSkipPage: React.FC = () => {
 
   const handleSelectSkip = (skip: Skip) => {
     setSelectedSkip(skip);
+  };
+
+  const handleCompareToggle = (skip: Skip) => {
+    setCompareSkips(current => {
+      const isSelected = current.some(s => s.id === skip.id);
+      if (isSelected) {
+        return current.filter(s => s.id !== skip.id);
+      }
+      if (current.length < 3) {
+        return [...current, skip];
+      }
+      return current;
+    });
   };
 
   const handleBack = () => {
@@ -94,6 +111,19 @@ const SelectSkipPage: React.FC = () => {
               skipCount={filteredCount}
               totalCount={totalCount}
             />
+
+            {/* Compare Button */}
+            {compareSkips.length > 0 && (
+              <div className="mb-6">
+                <button
+                  onClick={() => setIsCompareModalOpen(true)}
+                  className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Compare {compareSkips.length} Skip{compareSkips.length > 1 ? 's' : ''}
+                </button>
+              </div>
+            )}
+
             {filteredSkips.length === 0 ? (
               <EmptyState onReset={handleResetFilters} />
             ) : (
@@ -102,6 +132,8 @@ const SelectSkipPage: React.FC = () => {
                   skips={paginatedSkips}
                   selectedSkip={selectedSkip}
                   onSelectSkip={handleSelectSkip}
+                  compareSkips={compareSkips}
+                  onCompareToggle={handleCompareToggle}
                 />
                 {totalPages > 1 && (
                   <div className="mt-8 space-y-4">
@@ -125,6 +157,12 @@ const SelectSkipPage: React.FC = () => {
         selectedSkip={selectedSkip}
         onBack={handleBack}
         onContinue={handleContinue}
+      />
+
+      <CompareModal
+        skips={compareSkips}
+        isOpen={isCompareModalOpen}
+        onClose={() => setIsCompareModalOpen(false)}
       />
     </div>
   );

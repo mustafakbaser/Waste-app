@@ -4,16 +4,25 @@ import type { Skip } from '../../types';
 interface SkipCardProps {
   skip: Skip;
   isSelected: boolean;
+  isCompareSelected: boolean;
   onSelect: (skip: Skip) => void;
+  onCompareToggle: (skip: Skip) => void;
+  compareEnabled: boolean;
 }
 
-const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
+const SkipCard: React.FC<SkipCardProps> = ({ 
+  skip, 
+  isSelected, 
+  isCompareSelected,
+  onSelect, 
+  onCompareToggle,
+  compareEnabled
+}) => {
   const [imageError, setImageError] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
   const [currentImageUrl, setCurrentImageUrl] = useState(skip.image);
   const [currentUrlIndex, setCurrentUrlIndex] = useState(0);
 
-  // Reset image state when skip changes
   useEffect(() => {
     setImageError(false);
     setImageLoading(true);
@@ -54,19 +63,35 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
           ? 'border-2 border-blue-700 transform -translate-y-1 shadow-lg' 
           : 'border border-gray-200 hover:border-blue-500 shadow-md'}
       `}
-      tabIndex={0}
-      role="button"
-      aria-pressed={isSelected}
-      aria-label={`Select ${skip.size} skip for ${skip.price}`}
-      onClick={() => onSelect(skip)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onSelect(skip);
-        }
-      }}
     >
-      <div className="relative aspect-[5/3] overflow-hidden">
+      {/* Compare Checkbox */}
+      <div className="absolute top-3 left-3 z-10">
+        <label className="inline-flex items-center">
+          <input
+            type="checkbox"
+            checked={isCompareSelected}
+            onChange={() => onCompareToggle(skip)}
+            disabled={!isCompareSelected && !compareEnabled}
+            className="form-checkbox h-5 w-5 text-blue-700 rounded border-gray-300 focus:ring-blue-500 transition-colors"
+          />
+          <span className="ml-2 text-sm font-medium text-white bg-black/50 px-2 py-1 rounded">
+            Compare
+          </span>
+        </label>
+      </div>
+
+      <div 
+        className="relative aspect-[5/3] overflow-hidden cursor-pointer"
+        onClick={() => onSelect(skip)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onSelect(skip);
+          }
+        }}
+      >
         {imageLoading && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
             <div className="text-gray-400 text-sm">Loading...</div>

@@ -6,13 +6,19 @@ interface SkipGridProps {
   skips: Skip[];
   selectedSkip: Skip | null;
   onSelectSkip: (skip: Skip) => void;
+  compareSkips: Skip[];
+  onCompareToggle: (skip: Skip) => void;
 }
 
 const SkipGrid: React.FC<SkipGridProps> = ({ 
   skips, 
   selectedSkip, 
-  onSelectSkip 
+  onSelectSkip,
+  compareSkips,
+  onCompareToggle
 }) => {
+  const compareEnabled = compareSkips.length < 3;
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       {skips.map((skip) => (
@@ -20,7 +26,10 @@ const SkipGrid: React.FC<SkipGridProps> = ({
           key={skip.id}
           skip={skip}
           isSelected={selectedSkip?.id === skip.id}
+          isCompareSelected={compareSkips.some(s => s.id === skip.id)}
           onSelect={onSelectSkip}
+          onCompareToggle={onCompareToggle}
+          compareEnabled={compareEnabled}
         />
       ))}
     </div>
