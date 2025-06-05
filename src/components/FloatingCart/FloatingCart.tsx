@@ -28,14 +28,17 @@ const FloatingCart: React.FC<FloatingCartProps> = ({
     }
   };
 
+  // Mobile-first styles
+  const containerClasses = `
+    fixed z-50 transition-all duration-300 ease-in-out
+    ${isExpanded 
+      ? 'inset-x-0 bottom-0 px-4 pb-4 pt-2 md:inset-auto md:bottom-4 md:right-4 md:w-96' 
+      : 'bottom-4 right-4 w-16 h-16'}
+    ${selectedSkip ? 'opacity-100' : 'opacity-50'}
+  `;
+
   return (
-    <div 
-      className={`
-        fixed bottom-4 right-4 z-50 transition-all duration-300 ease-in-out
-        ${isExpanded ? 'w-full md:w-96' : 'w-16 h-16'}
-        ${selectedSkip ? 'opacity-100' : 'opacity-50'}
-      `}
-    >
+    <div className={containerClasses}>
       {/* Collapsed State */}
       {!isExpanded && (
         <button
@@ -56,53 +59,60 @@ const FloatingCart: React.FC<FloatingCartProps> = ({
 
       {/* Expanded State */}
       {isExpanded && selectedSkip && (
-        <div className="bg-white rounded-lg shadow-xl p-4 animate-slide-up">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">Selected Skip</h3>
-            <button
-              onClick={toggleExpanded}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label="Minimize cart"
-            >
-              <ChevronDownIcon className="h-6 w-6" />
-            </button>
+        <div className="bg-white rounded-lg shadow-xl animate-slide-up md:rounded-lg">
+          {/* Mobile Header Bar */}
+          <div className="md:hidden w-full flex justify-center mb-2">
+            <div className="w-12 h-1 bg-gray-300 rounded-full" />
           </div>
 
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="text-lg font-bold">{selectedSkip.size} Yard Skip</p>
-                <p className="text-gray-600">{selectedSkip.hirePeriod} hire</p>
+          <div className="p-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">Selected Skip</h3>
+              <button
+                onClick={toggleExpanded}
+                className="text-gray-400 hover:text-gray-600 transition-colors p-1"
+                aria-label="Minimize cart"
+              >
+                <ChevronDownIcon className="h-6 w-6" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-lg font-bold">{selectedSkip.size} Yard Skip</p>
+                  <p className="text-gray-600">{selectedSkip.hirePeriod}</p>
+                </div>
+                <p className="text-xl font-bold text-blue-700">{selectedSkip.price}</p>
               </div>
-              <p className="text-xl font-bold text-blue-700">{selectedSkip.price}</p>
-            </div>
 
-            <div className="flex gap-2 flex-wrap">
-              {selectedSkip.allowedOnRoad && (
-                <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                  Road Legal
-                </span>
-              )}
-              {selectedSkip.allowsHeavyWaste && (
-                <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
-                  Heavy Waste OK
-                </span>
-              )}
-            </div>
+              <div className="flex gap-2 flex-wrap">
+                {selectedSkip.allowedOnRoad && (
+                  <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                    Road Legal
+                  </span>
+                )}
+                {selectedSkip.allowsHeavyWaste && (
+                  <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
+                    Heavy Waste OK
+                  </span>
+                )}
+              </div>
 
-            <div className="flex gap-3 mt-6">
-              <button
-                onClick={onBack}
-                className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded text-gray-800 transition-colors"
-              >
-                Back
-              </button>
-              <button
-                onClick={onContinue}
-                className="flex-1 px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded transition-colors"
-              >
-                Continue
-              </button>
+              <div className="flex gap-3 mt-6">
+                <button
+                  onClick={onBack}
+                  className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded text-gray-800 transition-colors"
+                >
+                  Back
+                </button>
+                <button
+                  onClick={onContinue}
+                  className="flex-1 px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded transition-colors"
+                >
+                  Continue
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -111,4 +121,4 @@ const FloatingCart: React.FC<FloatingCartProps> = ({
   );
 };
 
-export default FloatingCart;
+export default FloatingCart

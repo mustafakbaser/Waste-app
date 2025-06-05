@@ -5,7 +5,7 @@
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(1rem);
+    transform: translateY(100%);
   }
   to {
     opacity: 1;
@@ -13,6 +13,23 @@
   }
 }
 
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .animate-slide-up {
   animation: slide-up 0.3s ease-out;
+}
+
+@media (min-width: 768px) {
+  .animate-slide-up {
+    animation: slide-in-right 0.3s ease-out;
+  }
 }
