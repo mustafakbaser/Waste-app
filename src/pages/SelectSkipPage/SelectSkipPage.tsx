@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import FilterBar from '../../components/FilterBar';
+import Pagination from '../../components/Pagination/Pagination';
 import useSkips from '../../hooks/useSkips';
 import useSkipFilters from '../../hooks/useSkipFilters';
 import type { Skip } from '../../types';
@@ -12,9 +13,11 @@ import type { Skip } from '../../types';
 // These would normally come from app state or URL params
 const POSTCODE = 'LE10 1SH';
 const AREA = 'Leicestershire';
+const ITEMS_PER_PAGE = 6;
 
 const SelectSkipPage: React.FC = () => {
   const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const { skips, loading, error, retry } = useSkips(POSTCODE, AREA);
   const { 
     filters, 
@@ -39,6 +42,16 @@ const SelectSkipPage: React.FC = () => {
       console.log('Continue with selected skip:', selectedSkip);
     }
   };
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredSkips.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedSkips = filteredSkips.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  // Reset to first page when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [filters]);
 
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
@@ -71,10 +84,17 @@ const SelectSkipPage: React.FC = () => {
               totalCount={totalCount}
             />
             <SkipGrid 
-              skips={filteredSkips}
+              skips={paginatedSkips}
               selectedSkip={selectedSkip}
               onSelectSkip={handleSelectSkip}
             />
+            {totalPages > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            )}
           </>
         )}
       </main>
