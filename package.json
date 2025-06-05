@@ -1,8 +1,9 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "skip-selection-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A modern, responsive React application for selecting and comparing skip sizes.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

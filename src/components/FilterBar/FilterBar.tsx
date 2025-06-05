@@ -2,7 +2,6 @@ import React from 'react';
 import { 
   AdjustmentsHorizontalIcon, 
   MagnifyingGlassIcon,
-  ChevronDownIcon,
   FunnelIcon,
   TruckIcon,
   ExclamationTriangleIcon
@@ -125,7 +124,14 @@ const FilterBar: React.FC<FilterBarProps> = ({
               bg-white dark:bg-gray-700 text-gray-900 dark:text-white
               focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
               focus:border-blue-500 dark:focus:border-blue-400
-              transition-all duration-200"
+              transition-all duration-200
+              appearance-none"
+            style={{
+              backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")',
+              backgroundPosition: 'right 0.5rem center',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: '1.5em 1.5em'
+            }}
           >
             <option value="none">{t('filters.sortBy')}</option>
             <option value="price-asc">{t('filters.priceLowToHigh')}</option>
@@ -133,9 +139,6 @@ const FilterBar: React.FC<FilterBarProps> = ({
             <option value="size-asc">{t('filters.sizeSmallToLarge')}</option>
             <option value="size-desc">{t('filters.sizeLargeToSmall')}</option>
           </select>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-            <ChevronDownIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" />
-          </div>
         </div>
 
         {/* Heavy Waste Filter */}
