@@ -6,6 +6,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import FilterBar from '../../components/FilterBar';
 import Pagination from '../../components/Pagination/Pagination';
 import FloatingCart from '../../components/FloatingCart/FloatingCart';
+import EmptyState from '../../components/EmptyState/EmptyState';
 import useSkips from '../../hooks/useSkips';
 import useSkipFilters from '../../hooks/useSkipFilters';
 import type { Skip } from '../../types';
@@ -40,6 +41,16 @@ const SelectSkipPage: React.FC = () => {
     if (selectedSkip) {
       console.log('Continue with selected skip:', selectedSkip);
     }
+  };
+
+  const handleResetFilters = () => {
+    setFilters({
+      sortBy: 'none',
+      heavyWasteOnly: false,
+      roadLegalOnly: false,
+      searchTerm: ''
+    });
+    setCurrentPage(1);
   };
 
   // Calculate pagination
@@ -83,22 +94,28 @@ const SelectSkipPage: React.FC = () => {
               skipCount={filteredCount}
               totalCount={totalCount}
             />
-            <SkipGrid 
-              skips={paginatedSkips}
-              selectedSkip={selectedSkip}
-              onSelectSkip={handleSelectSkip}
-            />
-            {totalPages > 1 && (
-              <div className="mt-8 space-y-4">
-                <p className="text-center text-sm text-gray-600">
-                  Showing {startIndex + 1}-{endIndex} of {filteredSkips.length} skips
-                </p>
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPage}
+            {filteredSkips.length === 0 ? (
+              <EmptyState onReset={handleResetFilters} />
+            ) : (
+              <>
+                <SkipGrid 
+                  skips={paginatedSkips}
+                  selectedSkip={selectedSkip}
+                  onSelectSkip={handleSelectSkip}
                 />
-              </div>
+                {totalPages > 1 && (
+                  <div className="mt-8 space-y-4">
+                    <p className="text-center text-sm text-gray-600">
+                      Showing {startIndex + 1}-{endIndex} of {filteredSkips.length} skips
+                    </p>
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={setCurrentPage}
+                    />
+                  </div>
+                )}
+              </>
             )}
           </>
         )}
