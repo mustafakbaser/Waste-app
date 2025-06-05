@@ -42,17 +42,7 @@
     "heavyWaste": "Ağır Atık OK",
     "transport": "Nakliye: £",
     "days": "günlük kiralama süresi",
-    "loading": "Yükleniyor...",
-    "imageAlt": "{size} yarda konteyner"
-  },
-  "pagination": {
-    "showing": "Gösteriliyor",
-    "of": "/",
-    "skips": "konteyner",
-    "previous": "Önceki",
-    "next": "Sonraki",
-    "navigation": "Sayfa navigasyonu",
-    "page": "Sayfa {page}"
+    "loading": "Yükleniyor..."
   },
   "cart": {
     "selectedSkip": "Seçilen Konteyner",
@@ -62,5 +52,28 @@
     "minimize": "Küçült",
     "back": "Geri",
     "continue": "Devam"
+  },
+  "pagination": {
+    "showing": "Gösteriliyor",
+    "of": "/",
+    "skips": "konteyner",
+    "previous": "Önceki",
+    "next": "Sonraki"
+  },
+  "compare": {
+    "title": "Konteynerleri Karşılaştır",
+    "close": "Karşılaştırmayı Kapat",
+    "feature": "Özellik",
+    "skipNumber": "Konteyner {{number}}",
+    "size": "Boyut",
+    "hirePeriod": "Kiralama Süresi",
+    "price": "Fiyat",
+    "roadLegal": "Yol İzinli",
+    "heavyWaste": "Ağır Atık",
+    "transportCost": "Nakliye Ücreti",
+    "perTonneCost": "Ton Başına Ücret",
+    "yes": "Evet",
+    "no": "Hayır",
+    "na": "Yok"
   }
 }

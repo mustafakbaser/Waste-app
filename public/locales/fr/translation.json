@@ -59,5 +59,21 @@
     "skips": "bennes",
     "previous": "Précédent",
     "next": "Suivant"
+  },
+  "compare": {
+    "title": "Comparer les Bennes",
+    "close": "Fermer la Comparaison",
+    "feature": "Caractéristique",
+    "skipNumber": "Benne {{number}}",
+    "size": "Taille",
+    "hirePeriod": "Période de Location",
+    "price": "Prix",
+    "roadLegal": "Légal sur Route",
+    "heavyWaste": "Déchets Lourds",
+    "transportCost": "Coût de Transport",
+    "perTonneCost": "Coût par Tonne",
+    "yes": "Oui",
+    "no": "Non",
+    "na": "N/A"
   }
 }

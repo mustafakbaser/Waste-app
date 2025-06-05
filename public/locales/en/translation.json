@@ -59,5 +59,21 @@
     "skips": "skips",
     "previous": "Previous",
     "next": "Next"
+  },
+  "compare": {
+    "title": "Compare Skips",
+    "close": "Close Comparison",
+    "feature": "Feature",
+    "skipNumber": "Skip {{number}}",
+    "size": "Size",
+    "hirePeriod": "Hire Period",
+    "price": "Price",
+    "roadLegal": "Road Legal",
+    "heavyWaste": "Heavy Waste",
+    "transportCost": "Transport Cost",
+    "perTonneCost": "Cost per Tonne",
+    "yes": "Yes",
+    "no": "No",
+    "na": "N/A"
   }
 }

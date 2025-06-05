@@ -59,5 +59,21 @@
     "skips": "contenedores",
     "previous": "Anterior",
     "next": "Siguiente"
+  },
+  "compare": {
+    "title": "Comparar Contenedores",
+    "close": "Cerrar Comparación",
+    "feature": "Característica",
+    "skipNumber": "Contenedor {{number}}",
+    "size": "Tamaño",
+    "hirePeriod": "Período de Alquiler",
+    "price": "Precio",
+    "roadLegal": "Legal en Carretera",
+    "heavyWaste": "Residuos Pesados",
+    "transportCost": "Coste de Transporte",
+    "perTonneCost": "Coste por Tonelada",
+    "yes": "Sí",
+    "no": "No",
+    "na": "N/D"
   }
 }
