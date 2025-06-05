@@ -22,39 +22,34 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
   }, [skip.image]);
 
   const fallbackUrls = [
-    skip.image, // Original URL
-    `${skip.image}.jpg`, // Try with .jpg extension
-    `${skip.image}.png`, // Try with .png extension
-    `${skip.image}.webp`, // Try with .webp extension
+    skip.image,
+    `${skip.image}.jpg`,
+    `${skip.image}.png`,
+    `${skip.image}.webp`,
   ];
 
   const handleImageError = () => {
-    console.log(`Image failed to load for skip ${skip.size}:`, currentImageUrl);
-    
-    // Try next fallback URL
     const nextIndex = currentUrlIndex + 1;
     if (nextIndex < fallbackUrls.length) {
-      console.log(`Trying fallback URL ${nextIndex} for skip ${skip.size}:`, fallbackUrls[nextIndex]);
       setCurrentUrlIndex(nextIndex);
       setCurrentImageUrl(fallbackUrls[nextIndex]);
-      setImageLoading(true); // Reset loading state for new URL
+      setImageLoading(true);
     } else {
-      // All fallbacks failed
-      console.log(`All image URLs failed for skip ${skip.size}`);
       setImageError(true);
       setImageLoading(false);
     }
   };
 
   const handleImageLoad = () => {
-    console.log(`Image loaded successfully for skip ${skip.size}:`, currentImageUrl);
     setImageLoading(false);
     setImageError(false);
   };
+
   return (
     <div 
       className={`
         relative bg-white rounded-lg overflow-hidden transition-all duration-300
+        flex flex-col min-h-[480px]
         ${isSelected 
           ? 'border-2 border-blue-700 transform -translate-y-1 shadow-lg' 
           : 'border border-gray-200 hover:border-blue-500 shadow-md'}
@@ -102,41 +97,42 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
         </div>
       </div>
       
-      <div className="p-4">
-        <h3 className="text-lg font-bold text-gray-900 mb-1">
-          {skip.size} Yard Skip
-        </h3>
-        <p className="text-gray-600 text-sm mb-3">
-          {skip.hirePeriod} hire period
-        </p>
-        
-        {/* Additional information tags */}
-        <div className="flex flex-wrap gap-1 mb-3">
-          {skip.allowedOnRoad && (
-            <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-              Road Legal
-            </span>
-          )}
-          {skip.allowsHeavyWaste && (
-            <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
-              Heavy Waste OK
-            </span>
-          )}
-          {skip.transportCost && (
-            <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
-              Transport: £{skip.transportCost}
-            </span>
-          )}
+      <div className="flex flex-col flex-grow p-4">
+        <div className="flex-grow">
+          <h3 className="text-lg font-bold text-gray-900 mb-1">
+            {skip.size} Yard Skip
+          </h3>
+          <p className="text-gray-600 text-sm mb-3">
+            {skip.hirePeriod} hire period
+          </p>
+          
+          <div className="flex flex-wrap gap-1 mb-3">
+            {skip.allowedOnRoad && (
+              <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                Road Legal
+              </span>
+            )}
+            {skip.allowsHeavyWaste && (
+              <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                Heavy Waste OK
+              </span>
+            )}
+            {skip.transportCost && (
+              <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
+                Transport: £{skip.transportCost}
+              </span>
+            )}
+          </div>
+          
+          <p className="text-blue-700 text-xl font-bold">
+            {skip.price}
+          </p>
         </div>
-        
-        <p className="text-blue-700 text-xl font-bold mb-4">
-          {skip.price}
-        </p>
         
         <button
           type="button"
           className={`
-            w-full py-2 px-4 rounded transition-colors duration-200
+            w-full py-2 px-4 rounded transition-colors duration-200 mt-4
             ${isSelected 
               ? 'bg-blue-700 text-white cursor-default' 
               : 'bg-white text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white'}
