@@ -1,0 +1,66 @@
+{
+  "settings": {
+    "title": "Ayarlar",
+    "theme": "Tema",
+    "lightMode": "Açık Tema",
+    "darkMode": "Koyu Tema",
+    "language": "Dil"
+  },
+  "steps": {
+    "postcode": "Posta Kodu",
+    "wasteType": "Atık Türü",
+    "selectSkip": "Konteyner Seç",
+    "permitCheck": "İzin Kontrolü",
+    "chooseDate": "Tarih Seç",
+    "payment": "Ödeme"
+  },
+  "skipSelection": {
+    "title": "Konteyner Boyutunu Seçin",
+    "subtitle": "İhtiyaçlarınıza en uygun konteyner boyutunu seçin"
+  },
+  "filters": {
+    "title": "Filtreler ve Sıralama",
+    "of": "/",
+    "skips": "konteyner",
+    "clearAll": "Tümünü Temizle",
+    "searchPlaceholder": "Konteyner boyutlarında ara...",
+    "sortBy": "Sırala",
+    "priceLowToHigh": "Fiyat: Düşük → Yüksek",
+    "priceHighToLow": "Fiyat: Yüksek → Düşük",
+    "sizeSmallToLarge": "Boyut: Küçük → Büyük",
+    "sizeLargeToSmall": "Boyut: Büyük → Küçük",
+    "heavyWaste": "Ağır Atık",
+    "roadLegal": "Yol İzinli",
+    "heavyWasteActive": "Ağır Atık Uyumlu",
+    "roadLegalActive": "Yol İzinli"
+  },
+  "skipCard": {
+    "select": "Bu Konteyneri Seç",
+    "selected": "Seçildi",
+    "compare": "Karşılaştır",
+    "roadLegal": "Yol İzinli",
+    "heavyWaste": "Ağır Atık OK",
+    "transport": "Nakliye: £",
+    "days": "günlük kiralama süresi",
+    "loading": "Yükleniyor...",
+    "imageAlt": "{size} yarda konteyner"
+  },
+  "pagination": {
+    "showing": "Gösteriliyor",
+    "of": "/",
+    "skips": "konteyner",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "navigation": "Sayfa navigasyonu",
+    "page": "Sayfa {page}"
+  },
+  "cart": {
+    "selectedSkip": "Seçilen Konteyner",
+    "yardSkip": "Yarda Konteyner",
+    "viewDetails": "Seçilen konteyner detayları",
+    "noSelection": "Konteyner seçilmedi",
+    "minimize": "Küçült",
+    "back": "Geri",
+    "continue": "Devam"
+  }
+}

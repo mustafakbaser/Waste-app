@@ -1,0 +1,63 @@
+{
+  "settings": {
+    "title": "Einstellungen",
+    "theme": "Design",
+    "lightMode": "Heller Modus",
+    "darkMode": "Dunkler Modus",
+    "language": "Sprache"
+  },
+  "steps": {
+    "postcode": "Postleitzahl",
+    "wasteType": "Abfallart",
+    "selectSkip": "Container Wählen",
+    "permitCheck": "Genehmigungsprüfung",
+    "chooseDate": "Datum Wählen",
+    "payment": "Zahlung"
+  },
+  "skipSelection": {
+    "title": "Wählen Sie Ihre Containergröße",
+    "subtitle": "Wählen Sie die Containergröße, die am besten zu Ihren Bedürfnissen passt"
+  },
+  "filters": {
+    "title": "Filter & Sortierung",
+    "of": "von",
+    "skips": "Container",
+    "clearAll": "Alle löschen",
+    "searchPlaceholder": "Containergrößen suchen...",
+    "sortBy": "Sortieren nach",
+    "priceLowToHigh": "Preis: Niedrig → Hoch",
+    "priceHighToLow": "Preis: Hoch → Niedrig",
+    "sizeSmallToLarge": "Größe: Klein → Groß",
+    "sizeLargeToSmall": "Größe: Groß → Klein",
+    "heavyWaste": "Schwerer Abfall",
+    "roadLegal": "Straßenzulassung",
+    "heavyWasteActive": "Schwerlast-kompatibel",
+    "roadLegalActive": "Straßenzugelassen"
+  },
+  "skipCard": {
+    "select": "Auswählen",
+    "selected": "Ausgewählt",
+    "compare": "Vergleichen",
+    "roadLegal": "Straßenzugelassen",
+    "heavyWaste": "Schwerlast OK",
+    "transport": "Transport: £",
+    "days": "Tage Mietdauer",
+    "loading": "Lädt..."
+  },
+  "cart": {
+    "selectedSkip": "Ausgewählter Container",
+    "yardSkip": "Yard Container",
+    "viewDetails": "Details anzeigen",
+    "noSelection": "Keine Auswahl",
+    "minimize": "Minimieren",
+    "back": "Zurück",
+    "continue": "Weiter"
+  },
+  "pagination": {
+    "showing": "Anzeige",
+    "of": "von",
+    "skips": "Container",
+    "previous": "Zurück",
+    "next": "Weiter"
+  }
+}

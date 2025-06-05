@@ -1,0 +1,63 @@
+{
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode",
+    "language": "Language"
+  },
+  "steps": {
+    "postcode": "Postcode",
+    "wasteType": "Waste Type",
+    "selectSkip": "Select Skip",
+    "permitCheck": "Permit Check",
+    "chooseDate": "Choose Date",
+    "payment": "Payment"
+  },
+  "skipSelection": {
+    "title": "Choose Your Skip Size",
+    "subtitle": "Select the skip size that best suits your needs"
+  },
+  "filters": {
+    "title": "Filters & Sorting",
+    "of": "of",
+    "skips": "skips",
+    "clearAll": "Clear all",
+    "searchPlaceholder": "Search skip sizes...",
+    "sortBy": "Sort by",
+    "priceLowToHigh": "Price: Low → High",
+    "priceHighToLow": "Price: High → Low",
+    "sizeSmallToLarge": "Size: Small → Large",
+    "sizeLargeToSmall": "Size: Large → Small",
+    "heavyWaste": "Heavy Waste",
+    "roadLegal": "Road Legal",
+    "heavyWasteActive": "Heavy Waste Compatible",
+    "roadLegalActive": "Road Legal"
+  },
+  "skipCard": {
+    "select": "Select This Skip",
+    "selected": "Selected",
+    "compare": "Compare",
+    "roadLegal": "Road Legal",
+    "heavyWaste": "Heavy Waste OK",
+    "transport": "Transport: £",
+    "days": "days hire period",
+    "loading": "Loading..."
+  },
+  "cart": {
+    "selectedSkip": "Selected Skip",
+    "yardSkip": "Yard Skip",
+    "viewDetails": "View selected skip details",
+    "noSelection": "No skip selected",
+    "minimize": "Minimize cart",
+    "back": "Back",
+    "continue": "Continue"
+  },
+  "pagination": {
+    "showing": "Showing",
+    "of": "of",
+    "skips": "skips",
+    "previous": "Previous",
+    "next": "Next"
+  }
+}

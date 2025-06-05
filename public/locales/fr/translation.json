@@ -1,0 +1,63 @@
+{
+  "settings": {
+    "title": "Paramètres",
+    "theme": "Thème",
+    "lightMode": "Mode Clair",
+    "darkMode": "Mode Sombre",
+    "language": "Langue"
+  },
+  "steps": {
+    "postcode": "Code Postal",
+    "wasteType": "Type de Déchets",
+    "selectSkip": "Sélectionner Benne",
+    "permitCheck": "Vérification Permis",
+    "chooseDate": "Choisir Date",
+    "payment": "Paiement"
+  },
+  "skipSelection": {
+    "title": "Choisissez Votre Taille de Benne",
+    "subtitle": "Sélectionnez la taille de benne qui convient le mieux à vos besoins"
+  },
+  "filters": {
+    "title": "Filtres & Tri",
+    "of": "sur",
+    "skips": "bennes",
+    "clearAll": "Tout effacer",
+    "searchPlaceholder": "Rechercher des tailles...",
+    "sortBy": "Trier par",
+    "priceLowToHigh": "Prix: Bas → Haut",
+    "priceHighToLow": "Prix: Haut → Bas",
+    "sizeSmallToLarge": "Taille: Petit → Grand",
+    "sizeLargeToSmall": "Taille: Grand → Petit",
+    "heavyWaste": "Déchets Lourds",
+    "roadLegal": "Route Légale",
+    "heavyWasteActive": "Compatible Déchets Lourds",
+    "roadLegalActive": "Légal sur Route"
+  },
+  "skipCard": {
+    "select": "Sélectionner",
+    "selected": "Sélectionné",
+    "compare": "Comparer",
+    "roadLegal": "Route Légale",
+    "heavyWaste": "Déchets Lourds OK",
+    "transport": "Transport: £",
+    "days": "jours de location",
+    "loading": "Chargement..."
+  },
+  "cart": {
+    "selectedSkip": "Benne Sélectionnée",
+    "yardSkip": "Yards Benne",
+    "viewDetails": "Voir les détails",
+    "noSelection": "Aucune sélection",
+    "minimize": "Réduire",
+    "back": "Retour",
+    "continue": "Continuer"
+  },
+  "pagination": {
+    "showing": "Affichage",
+    "of": "sur",
+    "skips": "bennes",
+    "previous": "Précédent",
+    "next": "Suivant"
+  }
+}

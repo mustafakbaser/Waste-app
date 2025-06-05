@@ -1,0 +1,63 @@
+{
+  "settings": {
+    "title": "Ajustes",
+    "theme": "Tema",
+    "lightMode": "Modo Claro",
+    "darkMode": "Modo Oscuro",
+    "language": "Idioma"
+  },
+  "steps": {
+    "postcode": "Código Postal",
+    "wasteType": "Tipo de Residuo",
+    "selectSkip": "Seleccionar Contenedor",
+    "permitCheck": "Verificar Permiso",
+    "chooseDate": "Elegir Fecha",
+    "payment": "Pago"
+  },
+  "skipSelection": {
+    "title": "Elija su Tamaño de Contenedor",
+    "subtitle": "Seleccione el tamaño de contenedor que mejor se adapte a sus necesidades"
+  },
+  "filters": {
+    "title": "Filtros y Ordenación",
+    "of": "de",
+    "skips": "contenedores",
+    "clearAll": "Borrar todo",
+    "searchPlaceholder": "Buscar tamaños...",
+    "sortBy": "Ordenar por",
+    "priceLowToHigh": "Precio: Bajo → Alto",
+    "priceHighToLow": "Precio: Alto → Bajo",
+    "sizeSmallToLarge": "Tamaño: Pequeño → Grande",
+    "sizeLargeToSmall": "Tamaño: Grande → Pequeño",
+    "heavyWaste": "Residuos Pesados",
+    "roadLegal": "Legal en Carretera",
+    "heavyWasteActive": "Compatible con Residuos Pesados",
+    "roadLegalActive": "Legal en Carretera"
+  },
+  "skipCard": {
+    "select": "Seleccionar",
+    "selected": "Seleccionado",
+    "compare": "Comparar",
+    "roadLegal": "Legal en Carretera",
+    "heavyWaste": "Residuos Pesados OK",
+    "transport": "Transporte: £",
+    "days": "días de alquiler",
+    "loading": "Cargando..."
+  },
+  "cart": {
+    "selectedSkip": "Contenedor Seleccionado",
+    "yardSkip": "Yardas Contenedor",
+    "viewDetails": "Ver detalles",
+    "noSelection": "Sin selección",
+    "minimize": "Minimizar",
+    "back": "Atrás",
+    "continue": "Continuar"
+  },
+  "pagination": {
+    "showing": "Mostrando",
+    "of": "de",
+    "skips": "contenedores",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  }
+}

@@ -8,8 +8,11 @@ import Pagination from '../../components/Pagination/Pagination';
 import FloatingCart from '../../components/FloatingCart/FloatingCart';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import CompareModal from '../../components/CompareModal/CompareModal';
+import SettingsModal from '../../components/SettingsModal/SettingsModal';
 import useSkips from '../../hooks/useSkips';
 import useSkipFilters from '../../hooks/useSkipFilters';
+import { Settings } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import type { Skip } from '../../types';
 
 const POSTCODE = 'LE10 1SH';
@@ -21,6 +24,8 @@ const SelectSkipPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [compareSkips, setCompareSkips] = useState<Skip[]>([]);
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const { t } = useTranslation();
   
   const { skips, loading, error, retry } = useSkips(POSTCODE, AREA);
   const { 
@@ -82,18 +87,18 @@ const SelectSkipPage: React.FC = () => {
   }, [filters]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
-        <ProgressIndicator />
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+      <header className="bg-white dark:bg-gray-800 shadow-sm relative">
+        <ProgressIndicator onSettingsClick={() => setIsSettingsOpen(true)} />
       </header>
       
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
         <div className="text-center mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-            Choose Your Skip Size
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            {t('skipSelection.title')}
           </h1>
-          <p className="text-gray-600">
-            Select the skip size that best suits your needs
+          <p className="text-gray-600 dark:text-gray-400">
+            {t('skipSelection.subtitle')}
           </p>
         </div>
         
@@ -152,7 +157,7 @@ const SelectSkipPage: React.FC = () => {
           </>
         )}
       </main>
-      
+
       <FloatingCart
         selectedSkip={selectedSkip}
         onBack={handleBack}
@@ -163,6 +168,11 @@ const SelectSkipPage: React.FC = () => {
         skips={compareSkips}
         isOpen={isCompareModalOpen}
         onClose={() => setIsCompareModalOpen(false)}
+      />
+
+      <SettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
       />
     </div>
   );
