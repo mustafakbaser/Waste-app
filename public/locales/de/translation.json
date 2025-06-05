@@ -77,8 +77,8 @@
     "na": "k.A."
   },
   "callback": {
-    "title": "Noch unsicher? Wir rufen Sie an.",
-    "subtitle": "Geben Sie Ihre Nummer ein und wir melden uns in Kürze.",
+    "title": "Noch unsicher? Wir helfen Ihnen gerne weiter.",
+    "subtitle": "Hinterlassen Sie Ihre Telefonnummer und wir rufen Sie so schnell wie möglich zurück, um Sie bestmöglich zu beraten.",
     "placeholder": "Ihre Telefonnummer",
     "button": "Rufen Sie mich zurück",
     "validation": "Bitte geben Sie eine gültige Telefonnummer ein",

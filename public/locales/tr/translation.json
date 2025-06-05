@@ -77,8 +77,8 @@
     "na": "Yok"
   },
   "callback": {
-    "title": "Emin değil misiniz? Sizi arayalım.",
-    "subtitle": "Numaranızı girin, en kısa sürede size ulaşalım.",
+    "title": "Kararsız mı kaldınız? Size yardımcı olmaktan memnuniyet duyarız.",
+    "subtitle": "Numaranızı bizimle paylaşın, ihtiyaçlarınıza özel destek sunmak için en kısa sürede sizi arayalım.",
     "placeholder": "Telefon numaranız",
     "button": "Beni Arayın",
     "validation": "Lütfen geçerli bir telefon numarası girin",

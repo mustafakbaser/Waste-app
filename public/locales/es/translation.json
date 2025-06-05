@@ -77,8 +77,8 @@
     "na": "N/D"
   },
   "callback": {
-    "title": "¿Aún dudas? Déjanos llamarte.",
-    "subtitle": "Ingresa tu número y nos pondremos en contacto pronto.",
+    "title": "¿Aún no estás seguro? Estamos aquí para ayudarte.",
+    "subtitle": "Déjanos tu número y uno de nuestros asesores te llamará lo antes posible para ayudarte.",
     "placeholder": "Tu número de teléfono",
     "button": "Llámame",
     "validation": "Por favor, introduce un número de teléfono válido",

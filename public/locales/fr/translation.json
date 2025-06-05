@@ -77,8 +77,8 @@
     "na": "N/A"
   },
   "callback": {
-    "title": "Encore indécis ? Laissez-nous vous appeler.",
-    "subtitle": "Entrez votre numéro et nous vous contacterons rapidement.",
+    "title": "Vous hésitez encore ? Nous sommes là pour vous aider.",
+    "subtitle": "Laissez-nous votre numéro et un membre de notre équipe vous rappellera très bientôt pour vous accompagner.",
     "placeholder": "Votre numéro de téléphone",
     "button": "Rappelez-moi",
     "validation": "Veuillez entrer un numéro de téléphone valide",

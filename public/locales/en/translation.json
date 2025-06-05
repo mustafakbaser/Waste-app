@@ -77,8 +77,8 @@
     "na": "N/A"
   },
   "callback": {
-    "title": "Still unsure? Let us call you.",
-    "subtitle": "Enter your number and we'll get in touch shortly.",
+    "title": "Not quite sure yet? We’re here to help.",
+    "subtitle": "Leave your number, and one of our team members will call you shortly to assist you.",
     "placeholder": "Your phone number",
     "button": "Call Me Back",
     "validation": "Please enter a valid phone number",
