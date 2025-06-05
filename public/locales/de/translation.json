@@ -59,5 +59,32 @@
     "skips": "Container",
     "previous": "Zurück",
     "next": "Weiter"
+  },
+  "compare": {
+    "title": "Container Vergleichen",
+    "close": "Vergleich Schließen",
+    "feature": "Merkmal",
+    "skipNumber": "Container {{number}}",
+    "size": "Größe",
+    "hirePeriod": "Mietdauer",
+    "price": "Preis",
+    "roadLegal": "Straßenzulassung",
+    "heavyWaste": "Schwerlast",
+    "transportCost": "Transportkosten",
+    "perTonneCost": "Preis pro Tonne",
+    "yes": "Ja",
+    "no": "Nein",
+    "na": "k.A."
+  },
+  "callback": {
+    "title": "Noch unsicher? Wir rufen Sie an.",
+    "subtitle": "Geben Sie Ihre Nummer ein und wir melden uns in Kürze.",
+    "placeholder": "Ihre Telefonnummer",
+    "button": "Rufen Sie mich zurück",
+    "validation": "Bitte geben Sie eine gültige Telefonnummer ein",
+    "toast": {
+      "title": "Anfrage erhalten",
+      "description": "Wir rufen Sie schnellstmöglich zurück."
+    }
   }
 }

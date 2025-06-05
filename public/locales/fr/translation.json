@@ -75,5 +75,16 @@
     "yes": "Oui",
     "no": "Non",
     "na": "N/A"
+  },
+  "callback": {
+    "title": "Encore indécis ? Laissez-nous vous appeler.",
+    "subtitle": "Entrez votre numéro et nous vous contacterons rapidement.",
+    "placeholder": "Votre numéro de téléphone",
+    "button": "Rappelez-moi",
+    "validation": "Veuillez entrer un numéro de téléphone valide",
+    "toast": {
+      "title": "Demande reçue",
+      "description": "Nous vous appellerons dès que possible."
+    }
   }
 }

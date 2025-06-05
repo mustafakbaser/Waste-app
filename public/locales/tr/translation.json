@@ -75,5 +75,16 @@
     "yes": "Evet",
     "no": "Hayır",
     "na": "Yok"
+  },
+  "callback": {
+    "title": "Emin değil misiniz? Sizi arayalım.",
+    "subtitle": "Numaranızı girin, en kısa sürede size ulaşalım.",
+    "placeholder": "Telefon numaranız",
+    "button": "Beni Arayın",
+    "validation": "Lütfen geçerli bir telefon numarası girin",
+    "toast": {
+      "title": "İstek alındı",
+      "description": "En kısa sürede sizi arayacağız."
+    }
   }
 }

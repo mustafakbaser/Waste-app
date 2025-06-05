@@ -75,5 +75,16 @@
     "yes": "Yes",
     "no": "No",
     "na": "N/A"
+  },
+  "callback": {
+    "title": "Still unsure? Let us call you.",
+    "subtitle": "Enter your number and we'll get in touch shortly.",
+    "placeholder": "Your phone number",
+    "button": "Call Me Back",
+    "validation": "Please enter a valid phone number",
+    "toast": {
+      "title": "Request received",
+      "description": "We'll call you as soon as possible."
+    }
   }
 }

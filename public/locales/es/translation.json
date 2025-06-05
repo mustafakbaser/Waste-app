@@ -75,5 +75,16 @@
     "yes": "Sí",
     "no": "No",
     "na": "N/D"
+  },
+  "callback": {
+    "title": "¿Aún dudas? Déjanos llamarte.",
+    "subtitle": "Ingresa tu número y nos pondremos en contacto pronto.",
+    "placeholder": "Tu número de teléfono",
+    "button": "Llámame",
+    "validation": "Por favor, introduce un número de teléfono válido",
+    "toast": {
+      "title": "Solicitud recibida",
+      "description": "Te llamaremos lo antes posible."
+    }
   }
 }
